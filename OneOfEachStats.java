@@ -18,28 +18,24 @@ public class OneOfEachStats {
 		int numOf3Children = 0;
 		int numOf4Children = 0;
 		int countOfChildren = 0;
-		int countTotal = 0;
+		double countTotal = 0;
 		double rnd = generator.nextDouble();
 		for(int i = 0; i < T; i++){
-			countOfChildren = 0;
 			if(rnd >= 0.5){
 				while(rnd >= 0.5){
 					countOfChildren++;
-					countTotal++;
 					rnd = generator.nextDouble();
 				}
 				countOfChildren++;
-				countTotal++;
 			}
 			else{
 				while(rnd < 0.5){
 					countOfChildren++;
-					countTotal++;
 					rnd = generator.nextDouble();
 				}
 				countOfChildren++;
-				countTotal++;
 			}
+			countTotal += countOfChildren;
 			if(countOfChildren == 2){
 				numOf2Children++;
 			}
@@ -49,8 +45,9 @@ public class OneOfEachStats {
 			if(countOfChildren >=4){
 				numOf4Children++;
 			}
+			countOfChildren = 0;
 		}
-		System.out.println("Average: " + (double)(countTotal/T) + " children to get at least one of each gender.");
+		System.out.println("Average: " + (countTotal / T) + " children to get at least one of each gender.");
 		System.out.println("Number of families with 2 children: " + numOf2Children);
 		System.out.println("Number of families with 3 children: " + numOf3Children);
 		System.out.println("Number of families with 4 or more children: " + numOf4Children);
