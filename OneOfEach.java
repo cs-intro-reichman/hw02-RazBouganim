@@ -5,6 +5,7 @@
  */
 public class OneOfEach {
 	public static void main (String[] args) {
+		//// Put your code here
 		double random = Math.random();
 		int countOfChildren = 0;
 		if(random >= 0.5){
