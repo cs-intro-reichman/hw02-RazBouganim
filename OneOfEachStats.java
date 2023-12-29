@@ -14,16 +14,61 @@ public class OneOfEachStats {
 		int seed = Integer.parseInt(args[1]);
 		// Initailizes a random numbers generator with the given seed value
         Random generator = new Random(seed);  
-		
-		//// In the previous version of this program, you used a statement like:
-		//// double rnd = Math.random();
-		//// Where "rnd" is the variable that stores the generated random value.
-		//// In this version of the program, replace this statement with:
-		//// double rnd = generator.nextDouble();
-		//// This statement will generate a random value in the range [0,1),
-		//// just like you had in the previous version, except that the 
-		//// randomization will be based on the given seed.
-		//// This is the only change that you have to do in the program.
-		    
+		int numOf2Children = 0;
+		int numOf3Children = 0;
+		int numOf4Children = 0;
+		int countOfChildren = 0;
+		int countTotal = 0;
+		double rnd = generator.nextDouble();
+		for(int i = 0; i < T; i++){
+			countOfChildren = 0;
+			if(rnd >= 0.5){
+				while(rnd >= 0.5){
+					countOfChildren++;
+					countTotal++;
+					rnd = generator.nextDouble();
+				}
+				countOfChildren++;
+				countTotal++;
+			}
+			else{
+				while(rnd < 0.5){
+					countOfChildren++;
+					countTotal++;
+					rnd = generator.nextDouble();
+				}
+				countOfChildren++;
+				countTotal++;
+			}
+			if(countOfChildren == 2){
+				numOf2Children++;
+			}
+			if(countOfChildren == 3){
+				numOf3Children++;
+			}
+			if(countOfChildren >=4){
+				numOf4Children++;
+			}
+		}
+		System.out.println("Average: " + (int)(countTotal/T) + " children to get at least one of each gender.");
+		System.out.println("Number of families with 2 children: " + numOf2Children);
+		System.out.println("Number of families with 3 children: " + numOf3Children);
+		System.out.println("Number of families with 4 or more children: " + numOf4Children);
+		if(numOf2Children >= numOf3Children){
+			if(numOf2Children >= numOf4Children){
+				System.out.println("The most common number of children is 2");
+			}
+			else{
+				System.out.println("The most common number of children is 4 or more");
+			}
+		}
+		else{
+			if(numOf3Children >= numOf4Children){
+				System.out.println("The most common number of children is 3");
+			}
+			else{
+				System.out.println("The most common number of children is 4 or more");
+			}
+		}
 	}
 }
