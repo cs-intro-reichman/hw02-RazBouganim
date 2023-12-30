@@ -21,15 +21,15 @@ public class OneOfEachStats {
 		double countTotal = 0;
 		double rnd = generator.nextDouble();
 		for(int i = 0; i < T; i++){
-			if(rnd >= 0.5){
-				while(rnd >= 0.5){
+			if(rnd < 0.5){ //check if it's a boy
+				while(rnd < 0.5){
 					countOfChildren++;
 					rnd = generator.nextDouble();
 				}
 				countOfChildren++;
 			}
-			else{
-				while(rnd < 0.5){
+			else{ //check if it's a girl
+				while(rnd >= 0.5){
 					countOfChildren++;
 					rnd = generator.nextDouble();
 				}

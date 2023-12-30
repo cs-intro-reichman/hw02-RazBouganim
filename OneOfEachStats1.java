@@ -14,15 +14,15 @@ public class OneOfEachStats1 {
 		double countTotal = 0;
 		double random = Math.random();
 		for(int i = 0; i < T; i++){
-			if(random >= 0.5){
-				while(random >= 0.5){
+			if(random > 0.5){
+				while(random > 0.5){
 					countOfChildren++;
 					random = Math.random();
 				}
 				countOfChildren++;
 			}
 			else{
-				while(random < 0.5){
+				while(random <= 0.5){
 					countOfChildren++;
 					random = Math.random();
 				}
